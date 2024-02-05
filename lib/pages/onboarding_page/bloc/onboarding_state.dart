@@ -6,4 +6,4 @@ final class OnboardingInitial extends OnboardingState {}
 
 final class OnboadingNormalState extends OnboardingState {}
 
-final class NextButtonState extends OnboardingState {}
+final class OnboadingGetStartedState extends OnboardingState {}

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:projectmanagement_for_project_manager/constants/image_paths.dart';
 import 'package:projectmanagement_for_project_manager/constants/on_boarding_constant_text.dart';
+import 'package:projectmanagement_for_project_manager/constants/routes_names.dart';
 import 'package:projectmanagement_for_project_manager/main.dart';
 import 'package:projectmanagement_for_project_manager/pages/onboarding_page/bloc/onboarding_bloc.dart';
 import 'package:projectmanagement_for_project_manager/widgets/onboarding_container.dart';
@@ -56,7 +57,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       ),
       bottomSheet: BlocBuilder<OnboardingBloc, OnboardingState>(
         builder: (context, state) {
-          if (state is NextButtonState) {
+          if (state is OnboadingGetStartedState) {
             return BottomSheet(
               backgroundColor: Colors.white,
               shape: const BeveledRectangleBorder(),
@@ -64,14 +65,36 @@ class _OnboardingPageState extends State<OnboardingPage> {
               onClosing: () {},
               builder: (context) {
                 return Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                  ),
                   color: Colors.white,
                   height: 100.h,
                   width: double.infinity,
                   child: Center(
-                    child: MaterialButton(
-                      onPressed: () {},
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RouteNames.loginPage,
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: const MaterialStatePropertyAll(
+                          Colors.purple,
+                        ),
+                        shape: const MaterialStatePropertyAll(
+                          StadiumBorder(),
+                        ),
+                        minimumSize: MaterialStatePropertyAll(
+                          Size(double.infinity, 50.h),
+                        ),
+                      ),
                       child: const Text(
                         "Get Started",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

@@ -5,7 +5,7 @@ part 'onboarding_state.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   OnboardingBloc() : super(OnboardingInitial()) {
-    on<PageViewEndEvent>((event, emit) => emit(NextButtonState()));
+    on<PageViewEndEvent>((event, emit) => emit(OnboadingGetStartedState()));
     on<NormalButtomSheetEvent>((event, emit) => emit(OnboadingNormalState()));
   }
 }
